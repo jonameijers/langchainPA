@@ -18,7 +18,7 @@ class HumanInputRun(BaseTool):
     name = "Human"
     description = (
         "You can ask a human for guidance when you think you "
-        "got stuck or you are not sure what to do next."
+        "got stuck or you are not sure what to do next, but try the ai bot first."
         "Engage the human to perform an action you cannot perform."
         "The input should be a question or action item for the human."
 

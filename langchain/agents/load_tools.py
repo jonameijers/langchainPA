@@ -39,7 +39,7 @@ def _get_requests() -> BaseTool:
 def _get_terminal() -> BaseTool:
     return Tool(
         name="Terminal",
-        description="Executes commands in a terminal. Input should be valid commands, and the output will be any output from running that command.",
+        description="Executes commands in a macos terminal. Input should be valid commands, and the output will be any output from running that command. Don't use nano command. Can also be used to create files on filesystem.",
         func=BashProcess().run,
     )
 
@@ -266,3 +266,5 @@ def get_all_tool_names() -> List[str]:
         + list(_EXTRA_LLM_TOOLS)
         + list(_LLM_TOOLS)
     )
+
+

@@ -30,7 +30,7 @@ class GoogleSearchResults(BaseTool):
     name = "Google Search Results JSON"
     description = (
         "A wrapper around Google Search. "
-        "Useful for when you need to answer questions about current events. "
+        "Use only for when you need to answer questions about current events, or when you need to validate a fact. Otherwise rely on your own knowledge. "
         "Input should be a search query. Output is a JSON array of the query results"
     )
     num_results: int = 4

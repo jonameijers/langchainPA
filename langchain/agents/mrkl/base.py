@@ -13,7 +13,7 @@ from langchain.llms.base import BaseLLM
 from langchain.prompts import PromptTemplate
 from langchain.tools.base import BaseTool
 
-FINAL_ANSWER_ACTION = "Final Answer:"
+FINAL_ANSWER_ACTION = "Final Result:"
 
 
 class ChainConfig(NamedTuple):
@@ -39,11 +39,12 @@ def get_action_and_input(llm_output: str) -> Tuple[str, str]:
     with "Action Input:" should be separated by a newline.
     """
     if FINAL_ANSWER_ACTION in llm_output:
-        return "Final Result", llm_output.split(FINAL_ANSWER_ACTION)[-1].strip()
+        return "Final Answer", llm_output.split(FINAL_ANSWER_ACTION)[-1].strip()
     regex = r"Action: (.*?)[\n]*Action Input: (.*)"
     match = re.search(regex, llm_output, re.DOTALL)
     if not match:
-        raise ValueError(f"Could not parse LLM output: `{llm_output}`")
+        print(f"Could not parse LLM output: `{llm_output}`")
+        return (llm_output,llm_output)
     action = match.group(1).strip()
     action_input = match.group(2)
     return action, action_input.strip(" ").strip('"')

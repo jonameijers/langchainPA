@@ -59,6 +59,7 @@ class LLMChain(Chain, BaseModel):
     def generate(self, input_list: List[Dict[str, Any]]) -> LLMResult:
         """Generate LLM result from inputs."""
         prompts, stop = self.prep_prompts(input_list)
+        print(f'prompts = {prompts}')
         return self.llm.generate_prompt(prompts, stop)
 
     async def agenerate(self, input_list: List[Dict[str, Any]]) -> LLMResult:
