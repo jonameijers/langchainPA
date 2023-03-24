@@ -39,7 +39,7 @@ def get_action_and_input(llm_output: str) -> Tuple[str, str]:
     with "Action Input:" should be separated by a newline.
     """
     if FINAL_ANSWER_ACTION in llm_output:
-        return "Final Answer", llm_output.split(FINAL_ANSWER_ACTION)[-1].strip()
+        return "Final Result", llm_output.split(FINAL_ANSWER_ACTION)[-1].strip()
     regex = r"Action: (.*?)[\n]*Action Input: (.*)"
     match = re.search(regex, llm_output, re.DOTALL)
     if not match:
